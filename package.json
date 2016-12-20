@@ -1,0 +1,30 @@
+{
+  "name": "tiny-tpl",
+  "version": "1.0.0",
+  "description": "supper light weight, 1kb template engine for jquery",
+  "main": "src/tiny-tpl.js",
+  "scripts": {
+    "test": "echo \"test is not ready!\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/minhlucvan/tiny-tpl.git"
+  },
+  "keywords": [
+    "jquery",
+    "tpl",
+    "template",
+    "engine",
+    "1kb",
+    "light",
+    "weight",
+    "simple",
+    "customable"
+  ],
+  "author": "minhlv",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/minhlucvan/tiny-tpl/issues"
+  },
+  "homepage": "https://github.com/minhlucvan/tiny-tpl#readme"
+}
