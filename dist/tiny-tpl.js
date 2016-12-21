@@ -190,7 +190,6 @@
      * opt: {
      *    postScript: function( renderedDom ) a callback when template built
      *    renderMode: single|multi
-	 *    animate: fade | fadein
      * }
      */
     $.fn.tinyTpl = function(data, tpl ,opt){
