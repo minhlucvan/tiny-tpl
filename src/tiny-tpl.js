@@ -16,9 +16,17 @@
     // define constants
     var OPEN_TAG = '{% ';
     var CLOSE_TAG = ' %}';
+
     var STRING_VALUE_TAG = 'value';
+    var DEFAULT_FIELD_VALUE = "";
+
+    var TPL_PINED_CLASS = ".tiny-pined";
+
     var CHILD_TEMPLATE_KEY = 'template';
     var DATA_FIELD_KEY = 'field';
+
+    var ANIMATE_FADE = 'fade';
+    var ANIMATE_FADE_IN = 'fadein';
 
     /**
      * get deep value of an object
@@ -58,7 +66,7 @@
 
         var value = str.substring(startPost + 3, endPost);
 
-        if ( value.length <= 0 ) return '';
+        if ( value.length <= 0 || startPost < 0 || endPost < 0) return '';
 
         return value;
     }
@@ -79,7 +87,7 @@
         }
 
         if(value == null){
-            value = "";
+            value = DEFAULT_FIELD_VALUE;
         }
         return value;
     }
@@ -107,9 +115,29 @@
             count++;
         }
 
+        $container.append( result );
+    }
 
-        var $dom = $( result );
-        $container.append($dom)
+    /**
+     * do prescript
+     *
+     * @param element
+     * @param data
+     * @param opt
+     */
+    function doPreScript( element, data, opt ) {
+        if(opt && opt.animate ){
+            var animate = opt.animate;
+            switch ( animate ){
+                case ANIMATE_FADE: {
+                    $(element).fadeOut();
+                    break;
+                }
+                case ANIMATE_FADE_IN: {
+                    $(element).hide();
+                }
+            }
+        }
     }
 
     /**
@@ -120,22 +148,35 @@
      * @param opt
      */
     function doPostScript( element, data, opt ) {
-        var $chidConatiner = $(element).find('[' + CHILD_TEMPLATE_KEY + ']');
+        var $chidConatiner = $(element).find('[data-' + CHILD_TEMPLATE_KEY + ']');
 
-        $chidConatiner.each(function () {
+        $chidConatiner.each(function ( ind ) {
             var template = $(this).data( CHILD_TEMPLATE_KEY );
             var dataField = $(this).data( DATA_FIELD_KEY );
 
-            var data = getDeepValue(data, dataField);
+            var nodeData = getDeepValue(data[ind], dataField);
             try {
-                $(this).renderTpl(template, data);
+                $(this).tinyTpl( nodeData, template);
             } catch ( e ){
                 console.error('can not render child template.');
             }
         });
 
+        if(opt && opt.animate ){
+            var animate = opt.animate;
+            switch ( animate ){
+                case ANIMATE_FADE: {
+                    $(element).fadeIn();
+                    break;
+                }
+                case ANIMATE_FADE_IN: {
+                    $(element).fadeIn();
+                }
+            }
+        }
+
         if( opt && typeof opt.postScript === 'function'){
-            opt.postScript.call(element, data);
+            opt.postScript(element, data);
         }
     }
 
@@ -148,14 +189,23 @@
      * @param opt [optional] render option
      * opt: {
      *    postScript: function( renderedDom ) a callback when template built
+     *    renderMode: single|multi
      * }
      */
     $.fn.tinyTpl = function(data, tpl ,opt){
+        if ( typeof data !== 'string' && !data ){
+            return;
+        }
+
         if ( !Array.isArray( data ) ){
             data = [ data ];
         }
 
-        if( !tpl ){
+        if( typeof tpl === 'object' ){
+            opt = tpl;
+        }
+
+        if( typeof tpl !== 'string' ){
             tpl = $(this).data( CHILD_TEMPLATE_KEY );
         }
 
@@ -166,13 +216,15 @@
 
         var tplStr = "";
         if( $tplEl.attr('type') == 'text/template'){
-            tplStr = $tplEl.text();
-        } else {
             tplStr = $tplEl.html();
+        } else {
+            tplStr = $tplEl.get(0).outerHTML;
         }
 
+        $(this).children().not(TPL_PINED_CLASS).remove();
+
         var container = this;
-        $(this).text('');
+        doPreScript(this, data, opt);
         data.forEach(function ( dat ) {
             renderSingleData(container, tplStr, dat, opt);
         });
