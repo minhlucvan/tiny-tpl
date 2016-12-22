@@ -36,7 +36,7 @@ Very easy, right?
 
 I added some animations ``fade``, ``expand``, you can use it individualy or mix together. If you like to add custom one you can write it to prescript and postscript functions.
 
-```
+```html
 	<ul id="tiny-ctn" data-template="#tiny-tpl"></ul>
 	<script type="text/template" id="tiny-tpl">
 		<li>Item {% value %}</li>
@@ -44,14 +44,15 @@ I added some animations ``fade``, ``expand``, you can use it individualy or mix 
 
 ```
 
-```
+```javascript
+
 	// you also can render primitive value as string or number by put {% value %}
 
 	var toggle = 0;
 	var data = ["one", "two"];
 
 	$(document).click(function(){
-		$("#tiny-ctn").tinyTpl(data[toggle])				
+		$("#tiny-ctn").tinyTpl(data[toggle], {animate: "fade|expand"})				
 				
 		toggle = 1 - toggle;	
 	});
