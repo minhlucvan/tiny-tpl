@@ -32,7 +32,11 @@ supper light weight 1kb template engine for jquery
 ```
 Very easy, right?
 
-## Animation
+## Array Rendering
+
+Tiny-tpl support array rendering, you simply pass your array  as usual, tiny-tpl will render your data one by one. 
+
+## Advanced
 
 I added some animations ``fade``, ``expand``, you can use it individualy or mix together. If you like to add custom one you can write it to prescript and postscript functions.
 
