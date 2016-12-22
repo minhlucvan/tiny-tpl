@@ -28,9 +28,35 @@ supper light weight 1kb template engine for jquery
 ```
 
 ```javascript
-$('tiny-ctn').tinyTpl({name: "Tiny-tpl"});
+	$('#tiny-ctn').tinyTpl({name: "Tiny-tpl"});
 ```
 Very easy, right?
+
+## Animation
+
+I added some animations ``fade``, ``expand``, you can use it individualy or mix together. If you like to add custom one you can write it to prescript and postscript functions.
+
+```
+	<ul id="tiny-ctn" data-template="#tiny-tpl"></ul>
+	<script type="text/template" id="tiny-tpl">
+		<li>Item {% value %}</li>
+	</script>
+
+```
+
+```
+	// you also can render primitive value as string or number by put {% value %}
+
+	var toggle = 0;
+	var data = ["one", "two"];
+
+	$(document).click(function(){
+		$("#tiny-ctn").tinyTpl(data[toggle])				
+				
+		toggle = 1 - toggle;	
+	});
+	
+``` 
 
 # Contrbutions
 
