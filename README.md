@@ -11,7 +11,7 @@ supper light weight 1kb template engine for jquery
 - [x] child template 
 - [x] string template
 - [x] dom template
-- [a] animation support
+- [x] animation support
 - [x] pined elements
 
 # Usages
@@ -29,7 +29,6 @@ supper light weight 1kb template engine for jquery
 
 ```javascript
 $('tiny-ctn').tinyTpl({name: "Tiny-tpl"});
-
 ```
 Very easy, right?
 
