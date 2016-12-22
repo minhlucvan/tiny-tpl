@@ -3,20 +3,20 @@ supper light weight 1kb template engine for jquery
 
 # Features
 
-[x] light weight
-[x] cross browsers
-[x] mobile friendly
-[x] array rendering
-[x] primitive value
-[x] child template 
-[x] string template
-[x] dom template
-[a] animation support
-[x] pined elements
+- [x] light weight
+- [x] cross browsers
+- [x] mobile friendly
+- [x] array rendering
+- [x] primitive value
+- [x] child template 
+- [x] string template
+- [x] dom template
+- [a] animation support
+- [x] pined elements
 
 # Usages
 
-## Baseic
+## Basic
 
 ```html
 
@@ -37,7 +37,7 @@ Very easy, right?
 
 All contributions are welcome. If you interst in this project, fork it make it your's and create a pull request.
 
-please keep this eengine as light weight as possible, please don't add no need feature.
+please keep this eengine as light weight as possible, please don't add no need features.
 
 # Issues
 
