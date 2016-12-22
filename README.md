@@ -3,10 +3,10 @@ supper light weight 1kb template engine for jquery
 
 
 ![](https://img.shields.io/badge/build-success-green.svg)
+![](https://img.shields.io/badge/jquey-%3E%3D1.7-ff69b4.svg)
 ![](https://img.shields.io/codeclimate/coverage/github/triAGENS/ashikawa-core.svg)
 ![](https://img.shields.io/codeclimate/issues/github/me-and/mdf.svg)
 ![](https://img.shields.io/packagist/l/doctrine/orm.svg)
-![](https://img.shields.io/badge/jquey-%3E%3D1.7-ff69b4.svg)
 
 ## browsers compatibility
 
