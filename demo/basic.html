@@ -3,19 +3,24 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Tiny template</title>
+	<style type="text/css">
+		body{
+			pading: 5px;
+		}
+	</style>
 </head>
 <body>
 	<div id="tiny-ctn" data-template="#tiny-tpl"></div>
 	<script type="text/template" id="tiny-tpl">
 		<h1>Hello {% name %}</h1>
 	</script>
-
-	<script src="../src/tiny-tpl.js"></script>
-	
 	<script
   src="https://code.jquery.com/jquery-3.1.1.min.js"
   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
   crossorigin="anonymous"></script>
+
+
+	<script src="../src/tiny-tpl.js"></script>
 
 	<script type="text/javascript">
 		$('#tiny-ctn').tinyTpl({name: "Tiny-tpl"})		

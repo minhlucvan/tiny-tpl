@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Tiny template</title>
+	<style type="text/css">
+		body{
+			pading: 5px;
+		}
+	</style>
+</head>
+<body>
+	<h1>Tiny-tpl Pined elements</h1>
+	<h3>List of items</h3>
+	<ul id="itens-ctn" data-template="#tpl-item">
+		<li class="tiny-pined">this iten would be keep after rendering</li>
+	</ul>
+	<script type="text/template" id="tpl-item">
+		<li>{% index %}. random number {% name %}</li>
+	</script>
+
+	<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+
+
+	<script src="../src/tiny-tpl.js"></script>
+
+	<script type="text/javascript">
+		var data = [1, 2, 3, 4, 5].map(function( val ){
+			return {
+				index: val,
+				name: Math.random()
+			}
+		});
+
+		//insted of define template by data-template attribute you can pass id of template as second agurment of tnyTpl function
+		$('#itens-ctn').tinyTpl(data);		
+	</script>
+</body>
+</html>

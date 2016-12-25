@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Tiny template</title>
+	<style type="text/css">
+		body{
+			pading: 5px;
+		}
+	</style>
+</head>
+<body>
+	<h1>Tiny-tpl Array rendering</h1>
+	<h3>List of items</h3>
+	<ul id="itens-ctn"></ul>
+	<script type="text/template" id="tpl-item">
+		<li>{% index %}. this is {% name %}</li>
+	</script>
+
+	<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+
+
+	<script src="../src/tiny-tpl.js"></script>
+
+	<script type="text/javascript">
+		var data = [
+				{index: 1, name: "item number one"},
+		 		{index: 2, name: "item number two"},
+		 		{index: 3, name: "item number three"},
+		 		{index: 4, name: "item number four"},
+		 		{index: 5, name: "item number five"}];
+
+		//insted of define template by data-template attribute you can pass id of template as second agurment of tnyTpl function
+		$('#itens-ctn').tinyTpl(data, "#tpl-item");		
+	</script>
+</body>
+</html>

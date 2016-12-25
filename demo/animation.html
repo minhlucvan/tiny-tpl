@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Tiny template</title>
+	<style type="text/css">
+		body{
+			pading: 5px;
+		}
+
+		.panel{
+			width: 200px;
+			height: 200px;
+			line-height: 200px;
+			text-align: center;
+			vertical-align: middle;
+		}
+		.red{
+			background-color: red;
+		}
+
+		.green{
+			background-color: green;
+		}
+
+	</style>
+</head>
+<body>
+	<h1>Tiny-tpl Animation</h1>
+	<div id="panel-ctn" data-template="#tpl-panel">
+	</div>
+
+	<script type="text/template" id="tpl-panel">
+		<div class="panel {% className %}">
+			{% text %}
+		</div>
+	</script>
+
+	<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+
+
+	<script src="../src/tiny-tpl.js"></script>
+
+	<script type="text/javascript">
+		var data = [
+			{className: "red", text: "this is red one"},
+			{className: "green", text: "ths is green one"}];
+		var toggle = 0;
+
+		setInterval(function(){
+			$('#panel-ctn').tinyTpl( data[toggle] , {animate : "fade"});
+
+			// switch toggle bettwen 0 and 1
+			toggle = 1 -toggle;
+		}, 1000)
+	</script>
+</body>
+</html>
