@@ -118,7 +118,9 @@
             count++;
         }
 
-        $container.append(result);
+        var $result = $(result);
+        $result.addClass('tiny-presents');
+        $container.append($result);
     }
 
     /**
@@ -159,18 +161,20 @@
      * @param opt
      */
     function doPostScript(element, data, opt) {
-        var $chidConatiner = $(element).find('[data-' + CHILD_TEMPLATE_KEY + ']');
+        var $presents = $(element).find('.tiny-presents');
+        $presents.each(function (ind) {
+            var $childCtn = $(this).find('[data-' + CHILD_TEMPLATE_KEY + ']');
+            $childCtn.each(function () {
+                var template = $(this).data(CHILD_TEMPLATE_KEY);
+                var dataField = $(this).data(DATA_FIELD_KEY);
 
-        $chidConatiner.each(function (ind) {
-            var template = $(this).data(CHILD_TEMPLATE_KEY);
-            var dataField = $(this).data(DATA_FIELD_KEY);
-
-            var nodeData = getDeepValue(data[ind], dataField);
-            try {
-                $(this).tinyTpl(nodeData, template);
-            } catch (e) {
-                console.error('can not render child template.');
-            }
+                var nodeData = getDeepValue(data[ind], dataField);
+                try {
+                    $(this).tinyTpl(nodeData, template);
+                } catch (e) {
+                    console.error('can not render child template.');
+                }
+            });
         });
 
 
@@ -263,4 +267,3 @@
 })(jQuery);
 
 // end template engine
-
